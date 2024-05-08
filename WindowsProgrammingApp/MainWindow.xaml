@@ -5,8 +5,75 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindowsProgrammingApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="800" Width="800">
+    <!--<StackPanel>
+        <TextBox x:Name="textInput" Width="200" Height="100" />
+        <Button Content="Save" Click="SaveButton_Click" />
 
-    </Grid>
+        <Border BorderBrush="Black" BorderThickness="1" 
+             AllowDrop="True" Drop="Image_Drop">
+            <TextBlock Text="Drag Drop Image Here" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+        <StackPanel>
+        --><!-- 이미지 표시 영역 --><!--
+        
+        <Image x:Name="droppedImage" Stretch="Uniform" Width="300" Height="300">
+            <Image.LayoutTransform>
+                <ScaleTransform x:Name="scaleTransform" ScaleX="1" ScaleY="1"/>
+            </Image.LayoutTransform>
+            <Image.RenderTransform>
+                <TranslateTransform x:Name="translateTransform"/>
+            </Image.RenderTransform>
+            <Image.Style>
+                <Style TargetType="Image">
+                    <Setter Property="Cursor" Value="SizeNWSE"/>
+                </Style>
+            </Image.Style>
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="scaleTransform" 
+                                         Storyboard.TargetProperty="ScaleX" To="1" Duration="0:0:0.2"/>
+                            <DoubleAnimation Storyboard.TargetName="scaleTransform" 
+                                         Storyboard.TargetProperty="ScaleY" To="1" Duration="0:0:0.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Image.Triggers>
+        </Image>
+
+        --><!-- Thumb 컨트롤 --><!--
+        <Thumb x:Name="resizeThumb" Width="100" Height="10" Cursor="SizeNWSE"
+           DragDelta="Thumb_DragDelta" VerticalAlignment="Bottom"/>
+        </StackPanel>
+    </StackPanel>-->
+    
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical">
+                <Button Content="이미지 삽입" Click="InsertImage_Click"/>
+            <Button Content="클립보드 이미지 삽입" Click="PasteRecentImage"/>
+
+            <RichTextBox Name="richTextBox" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                             IsDocumentEnabled="True">
+                    <FlowDocument>
+                        <Paragraph>
+                            <Run Text="텍스트를 입력하세요."/>
+
+                        </Paragraph>
+                    <Paragraph>
+                        <Run Text="텍스트를 입력하세요."/>
+
+                    </Paragraph>
+
+                </FlowDocument>
+                </RichTextBox>
+                
+
+            </StackPanel>
+        </ScrollViewer>
+
+
+
+
 </Window>
