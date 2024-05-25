@@ -44,6 +44,20 @@
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
+          "dependencies": {
+            "MaterialDesignThemes": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Syncfusion.Pdf.Wpf": {
+              "target": "Package",
+              "version": "[25.2.4, )"
+            },
+            "Syncfusion.PdfViewer.WPF": {
+              "target": "Package",
+              "version": "[25.2.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

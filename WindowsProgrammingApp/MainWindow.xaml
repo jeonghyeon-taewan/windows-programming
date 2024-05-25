@@ -1,38 +1,53 @@
-﻿<Window x:Class="WindowsProgrammingApp.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WindowsProgrammingApp"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="800">
- 
-    
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <StackPanel Orientation="Vertical">
-                <Button Content="이미지 삽입" Click="InsertImage_Click"/>
-  
-            <Button Content="save" Click="Save"/>
-            <Button Content="load" Click="Load"/>
-            <RichTextBox Name="richTextBox" 
-                         MouseWheel="rtb_PreviewMouseWheel"
-                   
-                         VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
-                             IsDocumentEnabled="True">
-                    <FlowDocument x:Name="flow">
-                        <Paragraph>
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+
+    xmlns:local="clr-namespace:WindowsProgrammingApp"
+    xmlns:PdfViewer="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF" xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+    x:Class="WindowsProgrammingApp.MainWindow"
+    mc:Ignorable="d"
+    Title="MainWindow" Height="800" Width="800">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Orientation="Vertical">
+            <Button Content="이미지 삽입" Click="InsertImage_Click" Background="BlueViolet"/>
+
+            <Button Content="save" Click="Save" Background="BlueViolet"/>
+            <Button Content="load" Click="Load" Background="BlueViolet"/>
+
+            <!-- Add Font Size Buttons -->
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Increase Font Size" Click="IncreaseFontSize_Click" />
+                <Button Content="Decrease Font Size" Click="DecreaseFontSize_Click" />
+                <Button Content="Change Text Color" Click="ChangeTextColor_Click" />
+                <syncfusion:ColorPicker x:Name="myColorPicker"/>
+                <Button Content="Change Highlight Color" Click="ChangeHighlightColor_Click" />
+                <Button Content="underline" Click="UnderlineText_Click" />
+                <Button Content="middleline" Click="MiddlelineText_Click" />
+                <Button Content="bold" Click="BoldText_Click" />
+                <Button Content="Open Modal Window" Click="OpenModalWindow_Click" 
+               />
+            </StackPanel>
+
+            <RichTextBox x:Name="richTextBox" 
+                    
+                     MouseWheel="rtb_PreviewMouseWheel"
+                     VerticalScrollBarVisibility="Auto"
+                     HorizontalScrollBarVisibility="Auto"
+                     IsDocumentEnabled="True">
+                <FlowDocument x:Name="flow"  AllowDrop="True"
+ Drop="RichTextBox_Drop"
+ DragOver="RichTextBox_DragOver">
+                    <Paragraph>
                         <Run Text="텍스트를 입력하세요."/>
                     </Paragraph>
-                 
-
                 </FlowDocument>
-                </RichTextBox>
-                
-
-            </StackPanel>
-        </ScrollViewer>
-
-
-
-
+            </RichTextBox>
+            <PdfViewer:PdfViewerControl/>
+        </StackPanel>
+    </ScrollViewer>
 </Window>

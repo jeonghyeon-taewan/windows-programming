@@ -12,4 +12,10 @@
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="C:\Users\jeonghyeon\.nuget\packages\" />
   </ItemGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgSyncfusion_Shared_WPF Condition=" '$(PkgSyncfusion_Shared_WPF)' == '' ">C:\Users\jeonghyeon\.nuget\packages\syncfusion.shared.wpf\25.2.4</PkgSyncfusion_Shared_WPF>
+    <PkgSyncfusion_PdfViewer_WPF Condition=" '$(PkgSyncfusion_PdfViewer_WPF)' == '' ">C:\Users\jeonghyeon\.nuget\packages\syncfusion.pdfviewer.wpf\25.2.4</PkgSyncfusion_PdfViewer_WPF>
+    <PkgMicrosoft_Xaml_Behaviors_Wpf Condition=" '$(PkgMicrosoft_Xaml_Behaviors_Wpf)' == '' ">C:\Users\jeonghyeon\.nuget\packages\microsoft.xaml.behaviors.wpf\1.1.39</PkgMicrosoft_Xaml_Behaviors_Wpf>
+    <PkgMaterialDesignThemes Condition=" '$(PkgMaterialDesignThemes)' == '' ">C:\Users\jeonghyeon\.nuget\packages\materialdesignthemes\5.0.0</PkgMaterialDesignThemes>
+  </PropertyGroup>
 </Project>

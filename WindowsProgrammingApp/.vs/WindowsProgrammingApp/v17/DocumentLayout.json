@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\workspace\\windows-programming\\WindowsProgrammingApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C95C4350-AE65-42B7-8A3C-2DD1BF48179B}|WindowsProgrammingApp.csproj|c:\\workspace\\windows-programming\\windowsprogrammingapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C95C4350-AE65-42B7-8A3C-2DD1BF48179B}|WindowsProgrammingApp.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C95C4350-AE65-42B7-8A3C-2DD1BF48179B}|WindowsProgrammingApp.csproj|c:\\workspace\\windows-programming\\windowsprogrammingapp\\window1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C95C4350-AE65-42B7-8A3C-2DD1BF48179B}|WindowsProgrammingApp.csproj|solutionrelative:window1.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C95C4350-AE65-42B7-8A3C-2DD1BF48179B}|WindowsProgrammingApp.csproj|c:\\workspace\\windows-programming\\windowsprogrammingapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C95C4350-AE65-42B7-8A3C-2DD1BF48179B}|WindowsProgrammingApp.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C95C4350-AE65-42B7-8A3C-2DD1BF48179B}|WindowsProgrammingApp.csproj|c:\\workspace\\windows-programming\\windowsprogrammingapp\\window1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C95C4350-AE65-42B7-8A3C-2DD1BF48179B}|WindowsProgrammingApp.csproj|solutionrelative:window1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C95C4350-AE65-42B7-8A3C-2DD1BF48179B}|WindowsProgrammingApp.csproj|c:\\workspace\\windows-programming\\windowsprogrammingapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C95C4350-AE65-42B7-8A3C-2DD1BF48179B}|WindowsProgrammingApp.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -27,6 +35,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Window1.xaml.cs",
+              "DocumentMoniker": "C:\\workspace\\windows-programming\\WindowsProgrammingApp\\Window1.xaml.cs",
+              "RelativeDocumentMoniker": "Window1.xaml.cs",
+              "ToolTip": "C:\\workspace\\windows-programming\\WindowsProgrammingApp\\Window1.xaml.cs",
+              "RelativeToolTip": "Window1.xaml.cs",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAAAFwAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-25T03:26:24.059Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -42,13 +63,25 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "Window1.xaml",
+              "DocumentMoniker": "C:\\workspace\\windows-programming\\WindowsProgrammingApp\\Window1.xaml",
+              "RelativeDocumentMoniker": "Window1.xaml",
+              "ToolTip": "C:\\workspace\\windows-programming\\WindowsProgrammingApp\\Window1.xaml",
+              "RelativeToolTip": "Window1.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-25T03:52:47.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\workspace\\windows-programming\\WindowsProgrammingApp\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
               "ToolTip": "C:\\workspace\\windows-programming\\WindowsProgrammingApp\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AQIAAGMAAAAAAAAAAAAEwC0AAABWAAAA",
+              "ViewState": "AQIAAAUBAAAAAAAAAAAuwB0BAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-05T06:28:07.662Z",
               "EditorCaption": ""

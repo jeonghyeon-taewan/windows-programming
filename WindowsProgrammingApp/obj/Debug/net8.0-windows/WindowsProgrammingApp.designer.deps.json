@@ -5,7 +5,162 @@
   },
   "compilationOptions": {},
   "targets": {
-    ".NETCoreApp,Version=v8.0": {}
+    ".NETCoreApp,Version=v8.0": {
+      "MaterialDesignColors/3.0.0": {
+        "runtime": {
+          "lib/net7.0/MaterialDesignColors.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
+          }
+        }
+      },
+      "MaterialDesignThemes/5.0.0": {
+        "dependencies": {
+          "MaterialDesignColors": "3.0.0",
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.39"
+        },
+        "runtime": {
+          "lib/net7.0/MaterialDesignThemes.Wpf.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.0.0"
+          }
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.39": {
+        "runtime": {
+          "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.39.4716"
+          }
+        }
+      },
+      "Syncfusion.Compression.Base/25.2.4": {
+        "runtime": {
+          "lib/net6.0-windows7.0/Syncfusion.Compression.Base.dll": {
+            "assemblyVersion": "25.2.4.0",
+            "fileVersion": "25.2.4.0"
+          }
+        }
+      },
+      "Syncfusion.Licensing/25.2.4": {
+        "runtime": {
+          "lib/net8.0/Syncfusion.Licensing.dll": {
+            "assemblyVersion": "25.2.4.0",
+            "fileVersion": "25.2.4.0"
+          }
+        }
+      },
+      "Syncfusion.Pdf.Wpf/25.2.4": {
+        "dependencies": {
+          "Syncfusion.Compression.Base": "25.2.4",
+          "Syncfusion.Licensing": "25.2.4"
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/Syncfusion.Pdf.Base.dll": {
+            "assemblyVersion": "25.2.4.0",
+            "fileVersion": "25.2.4.0"
+          }
+        }
+      },
+      "Syncfusion.PdfToImageConverter.WPF/25.2.4": {
+        "runtime": {
+          "lib/net6.0-windows7.0/Syncfusion.PdfToImageConverter.Base.dll": {
+            "assemblyVersion": "25.2.4.0",
+            "fileVersion": "25.2.4.0"
+          }
+        }
+      },
+      "Syncfusion.PdfViewer.WPF/25.2.4": {
+        "dependencies": {
+          "Syncfusion.Compression.Base": "25.2.4",
+          "Syncfusion.Licensing": "25.2.4",
+          "Syncfusion.Pdf.Wpf": "25.2.4",
+          "Syncfusion.PdfToImageConverter.WPF": "25.2.4",
+          "Syncfusion.Shared.WPF": "25.2.4"
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/Syncfusion.PdfViewer.WPF.dll": {
+            "assemblyVersion": "25.2.4.0",
+            "fileVersion": "25.2.4.0"
+          }
+        }
+      },
+      "Syncfusion.Shared.WPF/25.2.4": {
+        "dependencies": {
+          "Syncfusion.Licensing": "25.2.4"
+        },
+        "runtime": {
+          "lib/net6.0-windows7.0/Syncfusion.Shared.WPF.dll": {
+            "assemblyVersion": "25.2.4.0",
+            "fileVersion": "25.2.4.0"
+          }
+        }
+      }
+    }
   },
-  "libraries": {}
+  "libraries": {
+    "MaterialDesignColors/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yIAqOd9RYY7JUnspmBaL/PK+NEbRFFMCS43AT1YWM5MBkGAU5rUYh9q11zzEfqFcz2jDO6Zaf9W+m4Y1dGhatQ==",
+      "path": "materialdesigncolors/3.0.0",
+      "hashPath": "materialdesigncolors.3.0.0.nupkg.sha512"
+    },
+    "MaterialDesignThemes/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Az/2+YP+AdtyNceaU42cFo7Fl7KBrFkMa56uvesR363kZyOrASb0OnMvi0Ou4j1x0zwGa19AaK/vspDUBNDlBQ==",
+      "path": "materialdesignthemes/5.0.0",
+      "hashPath": "materialdesignthemes.5.0.0.nupkg.sha512"
+    },
+    "Microsoft.Xaml.Behaviors.Wpf/1.1.39": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8PZKqw9QOcu42xk8puY4P1+EXHL9YGOR9b7qhaYx5cILHul456H073tj99vyPcCt0W0781T9RwHqkx507ZyUpQ==",
+      "path": "microsoft.xaml.behaviors.wpf/1.1.39",
+      "hashPath": "microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
+    },
+    "Syncfusion.Compression.Base/25.2.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-U/I+admPkFwiLyhtoQ25WVthiHe52rXs3hm5vz+Wc2DwagZuczDo7U+JmJ9tLm53KfYo4Tvcg5+HXzpgVq3B4w==",
+      "path": "syncfusion.compression.base/25.2.4",
+      "hashPath": "syncfusion.compression.base.25.2.4.nupkg.sha512"
+    },
+    "Syncfusion.Licensing/25.2.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0IIre+PQHFxpYL+i3a3wYDSGWLkdoDA/ulB8DHuK2DeTEQeBe/qsVkYc6DHCRpR7nHAd02cHS4V6CYGDuMDYWw==",
+      "path": "syncfusion.licensing/25.2.4",
+      "hashPath": "syncfusion.licensing.25.2.4.nupkg.sha512"
+    },
+    "Syncfusion.Pdf.Wpf/25.2.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-O5e1S/Mgxb8WeuzdX5IxZZn80AKlOgZfVUpxcPRjOlpP9UCkV778wUSwsfDzwdkc947CAS49oCue8J9AcVQqTA==",
+      "path": "syncfusion.pdf.wpf/25.2.4",
+      "hashPath": "syncfusion.pdf.wpf.25.2.4.nupkg.sha512"
+    },
+    "Syncfusion.PdfToImageConverter.WPF/25.2.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UEuzEwqf7RMQpmbKI42tdlDCWNnQXZAxoyabFLSEugfpSN0tEJQoBEyf1cO8G/dHc9fM2aihiSP+G3gj4YPoCw==",
+      "path": "syncfusion.pdftoimageconverter.wpf/25.2.4",
+      "hashPath": "syncfusion.pdftoimageconverter.wpf.25.2.4.nupkg.sha512"
+    },
+    "Syncfusion.PdfViewer.WPF/25.2.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9a6O2qrmW3LlnIMu4Gx5bb72HN8/uv6paRahioaGhFtnAEb0jtPthcdJn6b9JhGTbPpeCwFmSpGznIxsbx3FDQ==",
+      "path": "syncfusion.pdfviewer.wpf/25.2.4",
+      "hashPath": "syncfusion.pdfviewer.wpf.25.2.4.nupkg.sha512"
+    },
+    "Syncfusion.Shared.WPF/25.2.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-38a9O+/v7Si72cmo/TaUs8LB5D5L0bg2QJrBOavOAYROctrZkE84BwRDzSpLG212SACfz2/UTWrVzlnaItFTPw==",
+      "path": "syncfusion.shared.wpf/25.2.4",
+      "hashPath": "syncfusion.shared.wpf.25.2.4.nupkg.sha512"
+    }
+  }
 }

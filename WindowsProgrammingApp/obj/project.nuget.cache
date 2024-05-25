@@ -1,8 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "j4IQ7rGeKUBbpVj8CzNU3EynbAGBpwgf2DEis4/IgQYbOhSBpvaO4fW9R2F8CEvFzISwtjWJHxW/AAf7cPPiAg==",
+  "dgSpecHash": "LlQw7hTt7hMDWtocBMjp7nEW/mxkslI6iMhIZkRBI2JGGgP9BVm8oXpbgTtq/eG1FRYojOSe27xeQZ3qAsLm9g==",
   "success": true,
   "projectFilePath": "C:\\workspace\\windows-programming\\WindowsProgrammingApp\\WindowsProgrammingApp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\jeonghyeon\\.nuget\\packages\\materialdesigncolors\\3.0.0\\materialdesigncolors.3.0.0.nupkg.sha512",
+    "C:\\Users\\jeonghyeon\\.nuget\\packages\\materialdesignthemes\\5.0.0\\materialdesignthemes.5.0.0.nupkg.sha512",
+    "C:\\Users\\jeonghyeon\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512",
+    "C:\\Users\\jeonghyeon\\.nuget\\packages\\syncfusion.compression.base\\25.2.4\\syncfusion.compression.base.25.2.4.nupkg.sha512",
+    "C:\\Users\\jeonghyeon\\.nuget\\packages\\syncfusion.licensing\\25.2.4\\syncfusion.licensing.25.2.4.nupkg.sha512",
+    "C:\\Users\\jeonghyeon\\.nuget\\packages\\syncfusion.pdf.wpf\\25.2.4\\syncfusion.pdf.wpf.25.2.4.nupkg.sha512",
+    "C:\\Users\\jeonghyeon\\.nuget\\packages\\syncfusion.pdftoimageconverter.wpf\\25.2.4\\syncfusion.pdftoimageconverter.wpf.25.2.4.nupkg.sha512",
+    "C:\\Users\\jeonghyeon\\.nuget\\packages\\syncfusion.pdfviewer.wpf\\25.2.4\\syncfusion.pdfviewer.wpf.25.2.4.nupkg.sha512",
+    "C:\\Users\\jeonghyeon\\.nuget\\packages\\syncfusion.shared.wpf\\25.2.4\\syncfusion.shared.wpf.25.2.4.nupkg.sha512"
+  ],
   "logs": []
 }
