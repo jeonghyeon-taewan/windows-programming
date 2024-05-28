@@ -1,5 +1,6 @@
 ﻿using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
+using Syncfusion.Windows.PdfViewer;
 using System;
 using System.IO;
 using System.Text;
@@ -473,6 +474,69 @@ namespace WindowsProgrammingApp
                         richTextBox.Selection.ApplyPropertyValue(TextElement.FontSizeProperty, fontSize);
                     }
                 }
+            }
+        }
+    
+
+        private void LoadPDFs(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+             
+
+                // Get the folder path from the TextBox
+                string folderPath = "C:\\Users\\jeonghyeon\\Desktop\\3-1";
+
+                // Check if the folder exists
+                if (Directory.Exists(folderPath))
+                {
+                    // Get all files in the directory and subdirectories
+                    string[] files = GetAllFiles(folderPath);
+
+                    // Filter files to include only .xaml and .pdf
+                    var filteredFiles = files.Where(file => file.EndsWith(".xaml") || file.EndsWith(".pdf"));
+
+                    // Add each filtered file to the ListBox
+                    foreach (string file in filteredFiles)
+                    {
+                        listbox.Items.Add(file);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("The specified folder path does not exist.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private string[] GetAllFiles(string path)
+        {
+            // Get all files in the current directory
+            var files = Directory.GetFiles(path);
+
+            // Get all subdirectories in the current directory
+            var directories = Directory.GetDirectories(path);
+
+            // For each subdirectory, get all files recursively and add them to the file list
+            foreach (var directory in directories)
+            {
+                files = files.Concat(GetAllFiles(directory)).ToArray();
+            }
+
+            return files;
+        }
+        private void OnFileSelected(object sender, SelectionChangedEventArgs e)
+        {
+            // Get the selected file
+            if (listbox.SelectedItem is string selectedFile)
+            {
+               
+                // Load the selected PDF file in the PdfViewerControl
+                pdfViewer.Load(selectedFile);
             }
         }
 

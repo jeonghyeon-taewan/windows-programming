@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\workspace\windows-programming\WindowsProgrammingApp\App.xaml
-21940794329
+31130175450
 3-927928251
-6652735794
+7-1559840563
 207802480026
-MainWindow.xaml;Window1.xaml;
+MainWindow.xaml;Window1.xaml;Window2.xaml;
 
 False
 

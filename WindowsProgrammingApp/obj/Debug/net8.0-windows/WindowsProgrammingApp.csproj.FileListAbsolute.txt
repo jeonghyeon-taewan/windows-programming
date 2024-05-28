@@ -37,3 +37,5 @@ C:\workspace\windows-programming\WindowsProgrammingApp\bin\Debug\net8.0-windows\
 C:\workspace\windows-programming\WindowsProgrammingApp\obj\Debug\net8.0-windows\App.baml
 C:\workspace\windows-programming\WindowsProgrammingApp\obj\Debug\net8.0-windows\Window1.baml
 C:\workspace\windows-programming\WindowsProgrammingApp\obj\Debug\net8.0-windows\Window1.g.cs
+C:\workspace\windows-programming\WindowsProgrammingApp\obj\Debug\net8.0-windows\Window2.g.cs
+C:\workspace\windows-programming\WindowsProgrammingApp\obj\Debug\net8.0-windows\Window2.baml

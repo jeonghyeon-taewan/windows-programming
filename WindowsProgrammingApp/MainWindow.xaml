@@ -18,7 +18,7 @@
 
             <Button Content="save" Click="Save" Background="BlueViolet"/>
             <Button Content="load" Click="Load" Background="BlueViolet"/>
-
+            <Button Content="LoadPDFs" Click="LoadPDFs" Background="BlueViolet"/>
             <!-- Add Font Size Buttons -->
             <StackPanel Orientation="Horizontal">
                 <Button Content="Increase Font Size" Click="IncreaseFontSize_Click" />
@@ -82,7 +82,8 @@
                     </Paragraph>
                 </FlowDocument>
             </RichTextBox>
-            <PdfViewer:PdfViewerControl/>
+            <ListBox x:Name="listbox" Height="200" SelectionChanged="OnFileSelected"></ListBox>
+            <PdfViewer:PdfViewerControl x:Name="pdfViewer"></PdfViewer:PdfViewerControl>
         </StackPanel>
     </ScrollViewer>
 </Window>
