@@ -10,7 +10,7 @@
     xmlns:PdfViewer="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF" xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     x:Class="WindowsProgrammingApp.MainWindow"
     mc:Ignorable="d"
-    Title="MainWindow" Height="800" Width="800">
+    Title="MainWindow" Height="800" Width="1200">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Orientation="Vertical">
@@ -29,8 +29,41 @@
                 <Button Content="underline" Click="UnderlineText_Click" />
                 <Button Content="middleline" Click="MiddlelineText_Click" />
                 <Button Content="bold" Click="BoldText_Click" />
+                <Button Content="Italick" Click="ItalicText_Click" />
                 <Button Content="Open Modal Window" Click="OpenModalWindow_Click" 
                />
+                <ComboBox x:Name="FontSizeComboBox"
+          Width="100"
+          SelectedIndex="4"
+          SelectionChanged="FontSizeComboBox_SelectionChanged">
+                    <ComboBoxItem Content="6" />
+                    <ComboBoxItem Content="7" />
+                    <ComboBoxItem Content="8" />
+                    <ComboBoxItem Content="9" />
+                    <ComboBoxItem Content="10" />
+                    <ComboBoxItem Content="11" />
+                    <ComboBoxItem Content="12" />
+                    <ComboBoxItem Content="13" />
+                    <ComboBoxItem Content="14" />
+                    <ComboBoxItem Content="15" />
+                    <ComboBoxItem Content="16" />
+                    <ComboBoxItem Content="17" />
+                    <ComboBoxItem Content="18" />
+                    <ComboBoxItem Content="19" />
+                    <ComboBoxItem Content="20" />
+                    <ComboBoxItem Content="21" />
+                    <ComboBoxItem Content="22" />
+                    <ComboBoxItem Content="23" />
+                    <ComboBoxItem Content="24" />
+                    <ComboBoxItem Content="25" />
+                    <ComboBoxItem Content="26" />
+                    <ComboBoxItem Content="27" />
+                    <ComboBoxItem Content="28" />
+                    <ComboBoxItem Content="29" />
+                    <ComboBoxItem Content="30" />
+                    <!-- 원하는 폰트 크기 항목 추가 -->
+                </ComboBox>
+
             </StackPanel>
 
             <RichTextBox x:Name="richTextBox" 
@@ -38,7 +71,9 @@
                      MouseWheel="rtb_PreviewMouseWheel"
                      VerticalScrollBarVisibility="Auto"
                      HorizontalScrollBarVisibility="Auto"
+                           PreviewKeyDown="RichTextBox_PreviewKeyDown"
                      IsDocumentEnabled="True">
+                
                 <FlowDocument x:Name="flow"  AllowDrop="True"
  Drop="RichTextBox_Drop"
  DragOver="RichTextBox_DragOver">

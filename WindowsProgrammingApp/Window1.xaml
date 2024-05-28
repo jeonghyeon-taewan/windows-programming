@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ModalWindow" Height="500" Width="300">
     <Grid>
-        <StackPanel>
+        <StackPanel x:Name="modal_stack_panel">
             <TextBlock Text="Set Custom Shortcuts" FontWeight="Bold" FontSize="16" Margin="10"/>
             <TextBlock Text="Increase Font Size:" Margin="10,0"/>
             <TextBox x:Name="IncreaseFontSizeShortcut" Margin="10" PreviewKeyDown="ShortcutTextBox_PreviewKeyDown"/>
@@ -11,7 +11,16 @@
             <TextBox x:Name="DecreaseFontSizeShortcut" Margin="10" PreviewKeyDown="ShortcutTextBox_PreviewKeyDown"/>
             <TextBlock Text="Change Text Color:" Margin="10,0"/>
             <TextBox x:Name="ChangeTextColorShortcut" Margin="10" PreviewKeyDown="ShortcutTextBox_PreviewKeyDown"/>
+            <TextBlock Text="Underline Text:" Margin="10,0"/>
+            <TextBox x:Name="UnderlineTextShortcut" Margin="10" PreviewKeyDown="ShortcutTextBox_PreviewKeyDown"/>
+            <TextBlock Text="Middleline Text:" Margin="10,0"/>
+            <TextBox x:Name="MiddlelineTextShortcut" Margin="10" PreviewKeyDown="ShortcutTextBox_PreviewKeyDown"/>
+            <TextBlock Text="Bold Text:" Margin="10,0"/>
+            <TextBox x:Name="BoldTextShortcut" Margin="10" PreviewKeyDown="ShortcutTextBox_PreviewKeyDown"/>
+            <TextBlock Text="Italic Text:" Margin="10,0"/>
+            <TextBox x:Name="ItalicTextShortcut" Margin="10" PreviewKeyDown="ShortcutTextBox_PreviewKeyDown"/>
             <Button Content="Save" Click="SaveShortcuts_Click" Margin="10"/>
         </StackPanel>
     </Grid>
+
 </Window>
