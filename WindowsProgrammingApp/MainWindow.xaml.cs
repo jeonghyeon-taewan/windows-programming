@@ -1,16 +1,17 @@
-﻿using MaterialDesignThemes.Wpf;
-using Microsoft.Win32;
-using Syncfusion.Windows.PdfViewer;
-using System;
+﻿using Microsoft.Win32;
+using Newtonsoft.Json.Linq;
+using Syncfusion.Windows.Shared;
 using System.IO;
+using System.Net.Http;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using System.Xml.Linq;
 using Path = System.IO.Path;
 
 
@@ -21,8 +22,13 @@ namespace WindowsProgrammingApp
     /// </summary>
     public partial class MainWindow : Window
     {
-           
-            Dictionary<string, string> shortcuts = new Dictionary<string, string>
+        private string? rootFolderPath;
+        private string currentFile;
+        double orginalWidth, originalHeight;
+        ScaleTransform scale = new ScaleTransform();
+
+
+        Dictionary<string, string> shortcuts = new Dictionary<string, string>
 {
     { Const.INCREASE_FONT_SIZE, "P" },
     { Const.DECREASE_FONT_SIZE, "O" },
@@ -36,8 +42,94 @@ namespace WindowsProgrammingApp
         public MainWindow()
         {
             InitializeComponent();
+            SetRootFolder();
+            LoadTreeView();
             myColorPicker.Color = Colors.Black;
+            InitializeFontSizeComboBox();
+            this.Loaded += new RoutedEventHandler(Window1_Loaded);
+
+            colDef5 = new ColumnDefinition { Width = new GridLength(5) };
+            colDef2Star = new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star), MinWidth = 100 };
+
+
+
         }
+        private bool _isMenuOpen = false;
+
+        private void ToggleMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_isMenuOpen)
+            {
+                CloseMenu();
+                RemoveColumns();
+            }
+            else
+            {
+                OpenMenu();
+                AddColumns();
+            }
+        }
+        private ColumnDefinition colDef5;
+        private ColumnDefinition colDef2Star;
+        private void AddColumns()
+        {
+            // Add the column definitions to the grid
+            myGrid.ColumnDefinitions.Add(colDef5);
+            myGrid.ColumnDefinitions.Add(colDef2Star);
+        }
+
+        private void RemoveColumns()
+        {
+            // Remove the column definitions from the grid
+            myGrid.ColumnDefinitions.Remove(colDef5);
+            myGrid.ColumnDefinitions.Remove(colDef2Star);
+        }
+
+        private void OpenMenu()
+        {
+            HiddenPanel.Visibility = Visibility.Visible;
+            splitter.Visibility = Visibility.Visible;
+            Storyboard openStoryboard = (Storyboard)FindResource("OpenMenuAnimation");
+            openStoryboard.Begin();
+            _isMenuOpen = true;
+        }
+
+        private void CloseMenu()
+        {
+            Storyboard closeStoryboard = (Storyboard)FindResource("CloseMenuAnimation");
+            closeStoryboard.Completed += (s, e) => HiddenPanel.Visibility = Visibility.Collapsed;
+            closeStoryboard.Completed += (s, e) => splitter.Visibility = Visibility.Collapsed;
+            closeStoryboard.Begin();
+            _isMenuOpen = false;
+        }
+        void Window1_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            ChangeSize(e.NewSize.Width, e.NewSize.Height);
+        }
+
+        void Window1_Loaded(object sender, RoutedEventArgs e)
+        {
+            orginalWidth = this.Width;
+            originalHeight = this.Height;
+
+            if (this.WindowState == WindowState.Maximized)
+            {
+                ChangeSize(this.ActualWidth, this.ActualHeight);
+            }
+
+            this.SizeChanged += new SizeChangedEventHandler(Window1_SizeChanged);
+        }
+
+        private void ChangeSize(double width, double height)
+        {
+    
+
+            pdfViewer.Height = height; 
+            FrameworkElement rootElement = this.Content as FrameworkElement;
+
+            rootElement.LayoutTransform = scale;
+        }
+
         private void RichTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if ((Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
@@ -188,35 +280,76 @@ namespace WindowsProgrammingApp
 
         private void Save(object sender, RoutedEventArgs e)
         {
+            save(currentFile);
+            //var folderDialog = new OpenFolderDialog
+            //{
+            //    // Set options here
+            //};
+
+            //if (folderDialog.ShowDialog() == true)
+            //{
+            //    var folderName = folderDialog.FolderName;
+            //    MessageBox.Show(folderName);
+            //    // Do something with the result
+            //}
+            //TextRange range;
+            //FileStream fStream;
+            //range = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
+
+            //string directoryPath = @"C:\Users\jeonghyeon\Desktop";
+            //string filePath = Path.Combine(directoryPath, "zzzzzz.xaml");
+
+
+            //if (!Directory.Exists(directoryPath))
+            //{
+            //    //Directory.CreateDirectory(directoryPath);
+            //}
+            //else
+            //{
+            //    fStream = new FileStream(filePath, FileMode.Create);
+            //    range.Save(fStream, DataFormats.XamlPackage);
+            //    fStream.Close();
+            //}
+
+
+        }
+        private void save(string path)
+        {
+            MessageBox.Show(path);
             TextRange range;
-            FileStream fStream;
+            FileStream fStream = null;
+
             range = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
 
-            string directoryPath = @"C:\workspace\test";
-            string filePath = Path.Combine(directoryPath, "test.xaml");
-
-            
-            if (!Directory.Exists(directoryPath))
+            try
             {
-                Directory.CreateDirectory(directoryPath);
-            }
+                if (!Directory.Exists(Path.GetDirectoryName(path)))
+                {
+                }
+                else
+                {
+                    File.Delete(path); // 파일 삭제
+                    fStream = new FileStream(path, FileMode.Create);
+                    range.Save(fStream, DataFormats.XamlPackage);
+                }
 
-            fStream = new FileStream(filePath, FileMode.Create);
-            range.Save(fStream, DataFormats.XamlPackage);
-            fStream.Close();
+       
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving file: " + ex.Message);
+            }
+            finally
+            {
+                fStream?.Close();
+            }
         }
+
+
+
         private void Load(object sender, RoutedEventArgs e)
         {
-            TextRange range;
-            FileStream fStream;
-            if (File.Exists("C:\\workspace\\test\\test.xaml"))
-            {
-                range = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
-                fStream = new FileStream("C:\\workspace\\test\\test.xaml", FileMode.OpenOrCreate);
-                range.Load(fStream, DataFormats.XamlPackage);
-                fStream.Close();
-            }
-
+         
 
         }
         private void InsertImage_Click(object sender, RoutedEventArgs e)
@@ -230,7 +363,7 @@ namespace WindowsProgrammingApp
                     var bitmap = new BitmapImage(new Uri(openFileDialog.FileName));
                     image.Source = bitmap;
 
-                    image.Width = bitmap.PixelWidth / 10; 
+                    image.Width = bitmap.PixelWidth / 10;
                     image.Height = bitmap.PixelHeight / 10;
 
 
@@ -260,7 +393,7 @@ namespace WindowsProgrammingApp
             TextSelection selectedText = richTextBox.Selection;
             if (!selectedText.IsEmpty)
             {
-                double currentFontSize = selectedText.GetPropertyValue(TextElement.FontSizeProperty)is double size ? size : 12;
+                double currentFontSize = selectedText.GetPropertyValue(TextElement.FontSizeProperty) is double size ? size : 12;
                 selectedText.ApplyPropertyValue(TextElement.FontSizeProperty, currentFontSize + delta);
             }
         }
@@ -270,7 +403,7 @@ namespace WindowsProgrammingApp
             TextSelection selectedText = richTextBox.Selection;
             if (!selectedText.IsEmpty)
             {
-        
+
                 selectedText.ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(myColorPicker.Color));
             }
 
@@ -318,7 +451,7 @@ namespace WindowsProgrammingApp
                 }
 
             }
-       
+
         }
 
         private void BoldText_Click(object sender, RoutedEventArgs e)
@@ -430,9 +563,10 @@ namespace WindowsProgrammingApp
                 }
             }
         }
-        private void OpenModalWindow_Click(object sender, RoutedEventArgs e) {
+        private void OpenModalWindow_Click(object sender, RoutedEventArgs e)
+        {
 
-            Window1 modalWindow = new Window1(shortcuts);
+            CustomShortCut modalWindow = new CustomShortCut(shortcuts);
 
             // Window1에서 발생한 이벤트를 구독
             modalWindow.ShortcutsSaved += ModalWindow_ShortcutsSaved;
@@ -453,7 +587,7 @@ namespace WindowsProgrammingApp
                 string action = kvp.Key;
                 string shortcut = kvp.Value;
 
-                shortcuts[action]=shortcut;
+                shortcuts[action] = shortcut;
             }
         }
         private void FontSizeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -476,42 +610,59 @@ namespace WindowsProgrammingApp
                 }
             }
         }
-    
-
-        private void LoadPDFs(object sender, RoutedEventArgs e)
+        private void SaveToLocal(string path)
         {
             try
             {
-             
+                // RichTextBox의 내용을 텍스트로 추출
+                string text = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd).Text;
 
-                // Get the folder path from the TextBox
-                string folderPath = "C:\\Users\\jeonghyeon\\Desktop\\3-1";
+                // 파일에 텍스트를 쓰기
+                File.WriteAllText(path, text);
 
-                // Check if the folder exists
-                if (Directory.Exists(folderPath))
-                {
-                    // Get all files in the directory and subdirectories
-                    string[] files = GetAllFiles(folderPath);
-
-                    // Filter files to include only .xaml and .pdf
-                    var filteredFiles = files.Where(file => file.EndsWith(".xaml") || file.EndsWith(".pdf"));
-
-                    // Add each filtered file to the ListBox
-                    foreach (string file in filteredFiles)
-                    {
-                        listbox.Items.Add(file);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("The specified folder path does not exist.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                MessageBox.Show("저장되었습니다.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("파일을 저장하는 동안 오류가 발생했습니다: " + ex.Message);
             }
         }
+
+
+        //private void LoadPDFs(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+
+
+        //        // Get the folder path from the TextBox
+        //        string folderPath = "C:\\Users\\jeonghyeon\\Desktop\\3-1";
+
+        //        // Check if the folder exists
+        //        if (Directory.Exists(folderPath))
+        //        {
+        //            // Get all files in the directory and subdirectories
+        //            string[] files = GetAllFiles(folderPath);
+
+        //            // Filter files to include only .xaml and .pdf
+        //            var filteredFiles = files.Where(file => file.EndsWith(".xaml") || file.EndsWith(".pdf"));
+
+        //            // Add each filtered file to the ListBox
+        //            foreach (string file in filteredFiles)
+        //            {
+        //                listbox.Items.Add(file);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("The specified folder path does not exist.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        //    }
+        //}
 
         private string[] GetAllFiles(string path)
         {
@@ -529,15 +680,280 @@ namespace WindowsProgrammingApp
 
             return files;
         }
-        private void OnFileSelected(object sender, SelectionChangedEventArgs e)
+        private void InitializeFontSizeComboBox()
         {
-            // Get the selected file
-            if (listbox.SelectedItem is string selectedFile)
+            for (int i = 6; i <= 50; i++)
             {
-               
-                // Load the selected PDF file in the PdfViewerControl
-                pdfViewer.Load(selectedFile);
+                FontSizeComboBox.Items.Add(new ComboBoxItem { Content = i.ToString() });
             }
+            FontSizeComboBox.SelectedIndex = 8; // Default selected index
+        }
+
+
+        private void LoadTreeView()
+        {
+
+            var rootDirectoryInfo = new DirectoryInfo(rootFolderPath);
+            FoldersTreeView.Items.Add(CreateDirectoryNode(rootDirectoryInfo));
+        }
+
+        private void SetRootFolder()
+        {
+            var folderDialog = new OpenFolderDialog
+            {
+                // Set options here
+            };
+
+            if (folderDialog.ShowDialog() == true)
+            {
+                rootFolderPath = folderDialog.FolderName;
+                if (!Directory.Exists(rootFolderPath))
+                {
+                    MessageBox.Show("지정된 경로가 유효하지 않습니다.");
+                }
+                else
+                {
+                }
+            }
+
+        }
+        private static TreeViewItem CreateDirectoryNode(DirectoryInfo directoryInfo)
+        {
+            var directoryNode = new TreeViewItem { Header = directoryInfo.Name, Tag = directoryInfo };
+            foreach (var directory in directoryInfo.GetDirectories())
+                directoryNode.Items.Add(CreateDirectoryNode(directory));
+            foreach (var file in directoryInfo.GetFiles())
+                directoryNode.Items.Add(new TreeViewItem { Header = file.Name, Tag = file });
+            return directoryNode;
+        }
+
+        private void NewFolderButton_Click(object sender, RoutedEventArgs e)
+        {
+            CreateNewItem(isFolder: true);
+        }
+
+        private void NewFileButton_Click(object sender, RoutedEventArgs e)
+        {
+            CreateNewItem(isFolder: false);
+        }
+        private void CreateNewItem(bool isFolder)
+        {
+            var selectedItem = FoldersTreeView.SelectedItem as TreeViewItem;
+            if (selectedItem == null) return;
+            var directoryInfo = selectedItem.Tag as DirectoryInfo;
+            if (directoryInfo == null || !Directory.Exists(directoryInfo.FullName))
+            {
+                return;
+            }
+            TreeViewItem newItem = new TreeViewItem();
+            TextBox textBox = new TextBox();
+            textBox.Text = "이름";
+            textBox.KeyDown += (s, e) =>
+            {
+                if (e.Key == Key.Enter)
+                {
+                    string newName = textBox.Text.Trim();
+                    if (string.IsNullOrEmpty(newName)) return;
+
+                    var selectedDirectory = selectedItem.Tag as DirectoryInfo;
+                    if (selectedDirectory == null) return;
+
+                    string newPath = isFolder ?
+                        System.IO.Path.Combine(selectedDirectory.FullName, newName) :
+                        System.IO.Path.Combine(selectedDirectory.FullName, newName + ".xaml");
+
+                    try
+                    {
+                        if (isFolder)
+                        {
+                            Directory.CreateDirectory(newPath);
+                            newItem.Header = newName;
+                            newItem.Tag = new DirectoryInfo(newPath);
+                        }
+                        else
+                        {
+                        
+                            TextRange range;
+                            FileStream fStream;
+                            RichTextBox box = new RichTextBox();
+
+                            range = new TextRange(box.Document.ContentStart, box.Document.ContentEnd);
+                            fStream = new FileStream(newPath, FileMode.Create);
+                            range.Save(fStream, DataFormats.XamlPackage);
+                            fStream.Close();
+                            newItem.Header = newName + ".xaml";
+                            newItem.Tag = new FileInfo(newPath);
+                        }
+                        newItem.IsExpanded = true; // 새로운 항목을 확장 상태로 설정합니다.
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error occurred: {ex.Message}");
+                    }
+                }
+            };
+
+            textBox.LostFocus += (s, e) =>
+            {
+                // Remove the textbox/new item if no name is provided (optional)
+                if (string.IsNullOrWhiteSpace(textBox.Text))
+                {
+                    selectedItem.Items.Remove(newItem);
+                }
+            };
+
+            newItem.Header = textBox;
+            selectedItem.Items.Add(newItem);
+            selectedItem.IsExpanded = true;
+
+            textBox.Focus();
+        }
+        private void FoldersTreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            // 선택된 아이템을 가져옵니다.
+            var selectedItem = e.NewValue as TreeViewItem;
+            if (selectedItem != null)
+            {
+                // 선택된 아이템의 Tag 속성을 DirectoryInfo 또는 FileInfo로 캐스팅합니다.
+                var selectedDirectoryInfo = selectedItem.Tag as DirectoryInfo;
+                var selectedFileInfo = selectedItem.Tag as FileInfo;
+
+                if (selectedDirectoryInfo != null)
+                {
+                }
+                else if (selectedFileInfo != null)
+                {
+             
+                    // 선택된 아이템이 .pdf 파일인지 확인합니다.
+                    if (selectedFileInfo.FullName.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase))
+                    {
+                        pdfViewer.Load(selectedFileInfo.FullName);
+                        pdfViewer.Visibility = Visibility.Visible;
+                        richTextBox.Visibility = Visibility.Collapsed;
+                        settingText.Visibility = Visibility.Collapsed;
+                        fileName.Visibility = Visibility.Collapsed;
+                    }
+                    else if(selectedFileInfo.FullName.EndsWith(".xaml", StringComparison.OrdinalIgnoreCase))
+                    {
+               
+
+                        TextRange range;
+                        FileStream fStream;
+                        if (File.Exists(selectedFileInfo.FullName))
+                        {
+                            range = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
+                            fStream = new FileStream(selectedFileInfo.FullName, FileMode.OpenOrCreate);
+                            range.Load(fStream, DataFormats.XamlPackage);
+                            fStream.Close();
+                            pdfViewer.Visibility = Visibility.Collapsed;
+                            richTextBox.Visibility = Visibility.Visible;
+                            settingText.Visibility = Visibility.Visible;
+                            currentFile = selectedFileInfo.FullName;
+                            fileName.Visibility = Visibility.Visible;
+                            fileName.Text = selectedFileInfo.Name.ToString();
+                        }
+                    }
+                }
+            }
+        }
+        private async void SendPostRequest()
+        {
+            // 버튼을 로딩 상태로 변경
+            CopyTextButton.IsEnabled = false;
+            CopyTextButton.Content = "Loading...";
+
+            string url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAQicF6fXLQb6Q0TV8QHMHEAHs6S9bWfyM";
+            string jsonBody = "{\"contents\":[{\"parts\":[{\"text\":\"" + InputTextBlock.Text + "\"}]}]}";
+
+            using (HttpClient client = new HttpClient())
+            {
+                var content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+                try
+                {
+                    HttpResponseMessage response = await client.PostAsync(url, content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        string extractedText = ExtractTextFromResponse(responseBody);
+                        DisplayBoldText(extractedText);
+                        //string plainText = MarkdownParser.ParseMarkdownToPlainText(extractedText);
+                        //Paragraph paragraph = new Paragraph();
+                        //paragraph.Inlines.Add(plainText);
+                        //OutputRichTextBox.Document.Blocks.Add(paragraph);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: " + response.StatusCode);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Exception: " + ex.Message);
+                }
+                finally
+                {
+                    // 응답 처리 후 버튼을 다시 활성화하고, 원래의 텍스트로 변경
+                    CopyTextButton.IsEnabled = true;
+                    CopyTextButton.Content = "Search";
+                }
+            }
+        }
+
+
+        private string ExtractTextFromResponse(string jsonResponse)
+        {
+            try
+            {
+                var jsonObject = JObject.Parse(jsonResponse);
+                var text = jsonObject["candidates"]?[0]?["content"]?["parts"]?[0]?["text"]?.ToString();
+                return text ?? "No text found";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error parsing JSON: " + ex.Message);
+                return "Error";
+            }
+        }
+
+        private void DisplayBoldText(string text)
+        {
+            OutputRichTextBox.Document.Blocks.Clear();
+            if (string.IsNullOrEmpty(text))
+            {
+                OutputRichTextBox.Document.Blocks.Add(new Paragraph(new Run("No text found")));
+                return;
+            }
+
+
+
+            string[] parts = text.Split(new[] { "**" }, StringSplitOptions.None);
+            bool isBold = false;
+            Paragraph paragraph = new Paragraph();
+            foreach (var part in parts)
+            {
+                Run runText = new Run(part)
+                {
+                    FontSize = 16 // 기본 텍스트 크기
+                };
+
+                if (isBold)
+                {
+                    runText.FontWeight = FontWeights.Bold;
+                }
+
+                paragraph.Inlines.Add(runText);
+                isBold = !isBold;
+            }
+
+            OutputRichTextBox.Document.Blocks.Add(paragraph);
+        }
+
+        private void CopyTextButton_Click(object sender, RoutedEventArgs e)
+        {
+            SendPostRequest();
         }
 
 

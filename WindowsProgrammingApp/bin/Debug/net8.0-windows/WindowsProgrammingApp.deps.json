@@ -8,12 +8,43 @@
     ".NETCoreApp,Version=v8.0": {
       "WindowsProgrammingApp/1.0.0": {
         "dependencies": {
+          "HtmlAgilityPack": "1.11.61",
+          "Markdig": "0.37.0",
+          "MarkdownSharp": "2.0.5",
           "MaterialDesignThemes": "5.0.0",
-          "Syncfusion.Pdf.Wpf": "25.2.4",
-          "Syncfusion.PdfViewer.WPF": "25.2.4"
+          "Newtonsoft.Json": "13.0.3",
+          "Syncfusion.Pdf.Wpf": "25.2.7",
+          "Syncfusion.PdfViewer.WPF": "25.2.7"
         },
         "runtime": {
           "WindowsProgrammingApp.dll": {}
+        }
+      },
+      "HtmlAgilityPack/1.11.61": {
+        "runtime": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {
+            "assemblyVersion": "1.11.61.0",
+            "fileVersion": "1.11.61.0"
+          }
+        }
+      },
+      "Markdig/0.37.0": {
+        "runtime": {
+          "lib/net8.0/Markdig.dll": {
+            "assemblyVersion": "0.37.0.0",
+            "fileVersion": "0.37.0.0"
+          }
+        }
+      },
+      "MarkdownSharp/2.0.5": {
+        "dependencies": {
+          "System.Configuration.ConfigurationManager": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/MarkdownSharp.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.5.27462"
+          }
         }
       },
       "MaterialDesignColors/3.0.0": {
@@ -36,6 +67,7 @@
           }
         }
       },
+      "Microsoft.NETCore.Platforms/2.0.0": {},
       "Microsoft.Xaml.Behaviors.Wpf/1.1.39": {
         "runtime": {
           "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.dll": {
@@ -44,66 +76,97 @@
           }
         }
       },
-      "Syncfusion.Compression.Base/25.2.4": {
+      "Newtonsoft.Json/13.0.3": {
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.3.27908"
+          }
+        }
+      },
+      "Syncfusion.Compression.Base/25.2.7": {
         "runtime": {
           "lib/net6.0-windows7.0/Syncfusion.Compression.Base.dll": {
-            "assemblyVersion": "25.2.4.0",
-            "fileVersion": "25.2.4.0"
+            "assemblyVersion": "25.2.7.0",
+            "fileVersion": "25.2.7.0"
           }
         }
       },
-      "Syncfusion.Licensing/25.2.4": {
+      "Syncfusion.Licensing/25.2.7": {
         "runtime": {
           "lib/net8.0/Syncfusion.Licensing.dll": {
-            "assemblyVersion": "25.2.4.0",
-            "fileVersion": "25.2.4.0"
+            "assemblyVersion": "25.2.7.0",
+            "fileVersion": "25.2.7.0"
           }
         }
       },
-      "Syncfusion.Pdf.Wpf/25.2.4": {
+      "Syncfusion.Pdf.Wpf/25.2.7": {
         "dependencies": {
-          "Syncfusion.Compression.Base": "25.2.4",
-          "Syncfusion.Licensing": "25.2.4"
+          "Syncfusion.Compression.Base": "25.2.7",
+          "Syncfusion.Licensing": "25.2.7"
         },
         "runtime": {
           "lib/net6.0-windows7.0/Syncfusion.Pdf.Base.dll": {
-            "assemblyVersion": "25.2.4.0",
-            "fileVersion": "25.2.4.0"
+            "assemblyVersion": "25.2.7.0",
+            "fileVersion": "25.2.7.0"
           }
         }
       },
-      "Syncfusion.PdfToImageConverter.WPF/25.2.4": {
+      "Syncfusion.PdfToImageConverter.WPF/25.2.7": {
         "runtime": {
           "lib/net6.0-windows7.0/Syncfusion.PdfToImageConverter.Base.dll": {
-            "assemblyVersion": "25.2.4.0",
-            "fileVersion": "25.2.4.0"
+            "assemblyVersion": "25.2.7.0",
+            "fileVersion": "25.2.7.0"
           }
         }
       },
-      "Syncfusion.PdfViewer.WPF/25.2.4": {
+      "Syncfusion.PdfViewer.WPF/25.2.7": {
         "dependencies": {
-          "Syncfusion.Compression.Base": "25.2.4",
-          "Syncfusion.Licensing": "25.2.4",
-          "Syncfusion.Pdf.Wpf": "25.2.4",
-          "Syncfusion.PdfToImageConverter.WPF": "25.2.4",
-          "Syncfusion.Shared.WPF": "25.2.4"
+          "Syncfusion.Compression.Base": "25.2.7",
+          "Syncfusion.Licensing": "25.2.7",
+          "Syncfusion.Pdf.Wpf": "25.2.7",
+          "Syncfusion.PdfToImageConverter.WPF": "25.2.7",
+          "Syncfusion.Shared.WPF": "25.2.7"
         },
         "runtime": {
           "lib/net6.0-windows7.0/Syncfusion.PdfViewer.WPF.dll": {
-            "assemblyVersion": "25.2.4.0",
-            "fileVersion": "25.2.4.0"
+            "assemblyVersion": "25.2.7.0",
+            "fileVersion": "25.2.7.0"
           }
         }
       },
-      "Syncfusion.Shared.WPF/25.2.4": {
+      "Syncfusion.Shared.WPF/25.2.7": {
         "dependencies": {
-          "Syncfusion.Licensing": "25.2.4"
+          "Syncfusion.Licensing": "25.2.7"
         },
         "runtime": {
           "lib/net6.0-windows7.0/Syncfusion.Shared.WPF.dll": {
-            "assemblyVersion": "25.2.4.0",
-            "fileVersion": "25.2.4.0"
+            "assemblyVersion": "25.2.7.0",
+            "fileVersion": "25.2.7.0"
           }
+        }
+      },
+      "System.Configuration.ConfigurationManager/4.5.0": {
+        "dependencies": {
+          "System.Security.Cryptography.ProtectedData": "4.5.0",
+          "System.Security.Permissions": "4.5.0"
+        }
+      },
+      "System.Security.AccessControl/4.5.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.0.0",
+          "System.Security.Principal.Windows": "4.5.0"
+        }
+      },
+      "System.Security.Cryptography.ProtectedData/4.5.0": {},
+      "System.Security.Permissions/4.5.0": {
+        "dependencies": {
+          "System.Security.AccessControl": "4.5.0"
+        }
+      },
+      "System.Security.Principal.Windows/4.5.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "2.0.0"
         }
       }
     }
@@ -113,6 +176,27 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "HtmlAgilityPack/1.11.61": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hqZASeEFHS9quHvfZSwaULoAJLWkOYVPiQjc3P9J4pQS8vSYzrP3bxe04Vm7vYYuxwbQhq9hCSVvZVLTyRaNaQ==",
+      "path": "htmlagilitypack/1.11.61",
+      "hashPath": "htmlagilitypack.1.11.61.nupkg.sha512"
+    },
+    "Markdig/0.37.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-biiu4MTPFjW55qw6v5Aphtj0MjDLJ14x8ndZwkJUHIeqvaSGKeqhLY7S7Vu/S3k7/c9KwhhnaCDP9hdFNUhcNA==",
+      "path": "markdig/0.37.0",
+      "hashPath": "markdig.0.37.0.nupkg.sha512"
+    },
+    "MarkdownSharp/2.0.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9fJB4Vk1vRbh8re/1eaC3jEi8h0+VsZUl8C7TWzymjlGnfJUFrc4q103PrNoKm84NiOO4HziUaXqrXHSvLtZwg==",
+      "path": "markdownsharp/2.0.5",
+      "hashPath": "markdownsharp.2.0.5.nupkg.sha512"
     },
     "MaterialDesignColors/3.0.0": {
       "type": "package",
@@ -128,6 +212,13 @@
       "path": "materialdesignthemes/5.0.0",
       "hashPath": "materialdesignthemes.5.0.0.nupkg.sha512"
     },
+    "Microsoft.NETCore.Platforms/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VdLJOCXhZaEMY7Hm2GKiULmn7IEPFE4XC5LPSfBVCUIA8YLZVh846gtfBJalsPQF2PlzdD7ecX7DZEulJ402ZQ==",
+      "path": "microsoft.netcore.platforms/2.0.0",
+      "hashPath": "microsoft.netcore.platforms.2.0.0.nupkg.sha512"
+    },
     "Microsoft.Xaml.Behaviors.Wpf/1.1.39": {
       "type": "package",
       "serviceable": true,
@@ -135,47 +226,89 @@
       "path": "microsoft.xaml.behaviors.wpf/1.1.39",
       "hashPath": "microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
     },
-    "Syncfusion.Compression.Base/25.2.4": {
+    "Newtonsoft.Json/13.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-U/I+admPkFwiLyhtoQ25WVthiHe52rXs3hm5vz+Wc2DwagZuczDo7U+JmJ9tLm53KfYo4Tvcg5+HXzpgVq3B4w==",
-      "path": "syncfusion.compression.base/25.2.4",
-      "hashPath": "syncfusion.compression.base.25.2.4.nupkg.sha512"
+      "sha512": "sha512-HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "path": "newtonsoft.json/13.0.3",
+      "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
     },
-    "Syncfusion.Licensing/25.2.4": {
+    "Syncfusion.Compression.Base/25.2.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-0IIre+PQHFxpYL+i3a3wYDSGWLkdoDA/ulB8DHuK2DeTEQeBe/qsVkYc6DHCRpR7nHAd02cHS4V6CYGDuMDYWw==",
-      "path": "syncfusion.licensing/25.2.4",
-      "hashPath": "syncfusion.licensing.25.2.4.nupkg.sha512"
+      "sha512": "sha512-gl31eT310qH1XQDoT3I46vTYc8wn6T9BtPecNZ6ESkfbizHN63mL6tbmIudpQcoy0VuHwnK9/6IxYq+DA6tF4A==",
+      "path": "syncfusion.compression.base/25.2.7",
+      "hashPath": "syncfusion.compression.base.25.2.7.nupkg.sha512"
     },
-    "Syncfusion.Pdf.Wpf/25.2.4": {
+    "Syncfusion.Licensing/25.2.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-O5e1S/Mgxb8WeuzdX5IxZZn80AKlOgZfVUpxcPRjOlpP9UCkV778wUSwsfDzwdkc947CAS49oCue8J9AcVQqTA==",
-      "path": "syncfusion.pdf.wpf/25.2.4",
-      "hashPath": "syncfusion.pdf.wpf.25.2.4.nupkg.sha512"
+      "sha512": "sha512-nOUiwIehDY1SGNBGwGC9v1xKLA78ytv6BScktV7vUrH76a1PBXGJwhhq+PzHVROr6Y+3Ch3XrrbUOt3AQyNlVQ==",
+      "path": "syncfusion.licensing/25.2.7",
+      "hashPath": "syncfusion.licensing.25.2.7.nupkg.sha512"
     },
-    "Syncfusion.PdfToImageConverter.WPF/25.2.4": {
+    "Syncfusion.Pdf.Wpf/25.2.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-UEuzEwqf7RMQpmbKI42tdlDCWNnQXZAxoyabFLSEugfpSN0tEJQoBEyf1cO8G/dHc9fM2aihiSP+G3gj4YPoCw==",
-      "path": "syncfusion.pdftoimageconverter.wpf/25.2.4",
-      "hashPath": "syncfusion.pdftoimageconverter.wpf.25.2.4.nupkg.sha512"
+      "sha512": "sha512-v2WPHzj44KleIoNTIOE58BJiPfU+mnZnQ+w3oRCk9Cz3SMXYGe1F0uM9PoRb7fi9/kZOVMENtHYbz9RTuSZEDw==",
+      "path": "syncfusion.pdf.wpf/25.2.7",
+      "hashPath": "syncfusion.pdf.wpf.25.2.7.nupkg.sha512"
     },
-    "Syncfusion.PdfViewer.WPF/25.2.4": {
+    "Syncfusion.PdfToImageConverter.WPF/25.2.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-9a6O2qrmW3LlnIMu4Gx5bb72HN8/uv6paRahioaGhFtnAEb0jtPthcdJn6b9JhGTbPpeCwFmSpGznIxsbx3FDQ==",
-      "path": "syncfusion.pdfviewer.wpf/25.2.4",
-      "hashPath": "syncfusion.pdfviewer.wpf.25.2.4.nupkg.sha512"
+      "sha512": "sha512-i6IeqUQlsTw/KIIAfPDq3KfkNRb1lVDxWy6Jq5I6sPvOHWQzIeeCoMVPf+3NUd/sjHq2vdgNybUlUW24hluzog==",
+      "path": "syncfusion.pdftoimageconverter.wpf/25.2.7",
+      "hashPath": "syncfusion.pdftoimageconverter.wpf.25.2.7.nupkg.sha512"
     },
-    "Syncfusion.Shared.WPF/25.2.4": {
+    "Syncfusion.PdfViewer.WPF/25.2.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-38a9O+/v7Si72cmo/TaUs8LB5D5L0bg2QJrBOavOAYROctrZkE84BwRDzSpLG212SACfz2/UTWrVzlnaItFTPw==",
-      "path": "syncfusion.shared.wpf/25.2.4",
-      "hashPath": "syncfusion.shared.wpf.25.2.4.nupkg.sha512"
+      "sha512": "sha512-e5zU9GT780qs4EOO3v3/Q74xpEbSTMtm79LGLQRp/8AJK8FZD0coWR56TqcWRUJCZGRYzgSxg/mzcwkI8CbEBg==",
+      "path": "syncfusion.pdfviewer.wpf/25.2.7",
+      "hashPath": "syncfusion.pdfviewer.wpf.25.2.7.nupkg.sha512"
+    },
+    "Syncfusion.Shared.WPF/25.2.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fze4AxkMl74s2ZmEkiG97DBdhFytXKvi3xLe8egxZtgj2MBnedixPPpjgB23AQCAzfcNzNbpnPHSgxhRJWIJMg==",
+      "path": "syncfusion.shared.wpf/25.2.7",
+      "hashPath": "syncfusion.shared.wpf.25.2.7.nupkg.sha512"
+    },
+    "System.Configuration.ConfigurationManager/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UIFvaFfuKhLr9u5tWMxmVoDPkFeD+Qv8gUuap4aZgVGYSYMdERck4OhLN/2gulAc0nYTEigWXSJNNWshrmxnng==",
+      "path": "system.configuration.configurationmanager/4.5.0",
+      "hashPath": "system.configuration.configurationmanager.4.5.0.nupkg.sha512"
+    },
+    "System.Security.AccessControl/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vW8Eoq0TMyz5vAG/6ce483x/CP83fgm4SJe5P8Tb1tZaobcvPrbMEL7rhH1DRdrYbbb6F0vq3OlzmK0Pkwks5A==",
+      "path": "system.security.accesscontrol/4.5.0",
+      "hashPath": "system.security.accesscontrol.4.5.0.nupkg.sha512"
+    },
+    "System.Security.Cryptography.ProtectedData/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wLBKzFnDCxP12VL9ANydSYhk59fC4cvOr9ypYQLPnAj48NQIhqnjdD2yhP8yEKyBJEjERWS9DisKL7rX5eU25Q==",
+      "path": "system.security.cryptography.protecteddata/4.5.0",
+      "hashPath": "system.security.cryptography.protecteddata.4.5.0.nupkg.sha512"
+    },
+    "System.Security.Permissions/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9gdyuARhUR7H+p5CjyUB/zPk7/Xut3wUSP8NJQB6iZr8L3XUXTMdoLeVAg9N4rqF8oIpE7MpdqHdDHQ7XgJe0g==",
+      "path": "system.security.permissions/4.5.0",
+      "hashPath": "system.security.permissions.4.5.0.nupkg.sha512"
+    },
+    "System.Security.Principal.Windows/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-U77HfRXlZlOeIXd//Yoj6Jnk8AXlbeisf1oq1os+hxOGVnuG+lGSfGqTwTZBoORFF6j/0q7HXIl8cqwQ9aUGqQ==",
+      "path": "system.security.principal.windows/4.5.0",
+      "hashPath": "system.security.principal.windows.4.5.0.nupkg.sha512"
     }
   }
 }

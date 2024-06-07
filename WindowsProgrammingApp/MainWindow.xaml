@@ -5,85 +5,156 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:local="clr-namespace:WindowsProgrammingApp"
     xmlns:PdfViewer="clr-namespace:Syncfusion.Windows.PdfViewer;assembly=Syncfusion.PdfViewer.WPF" xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
     x:Class="WindowsProgrammingApp.MainWindow"
     mc:Ignorable="d"
-    Title="MainWindow" Height="800" Width="1200">
+    Title="MainWindow" Height="800" Width="1400">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel Orientation="Vertical">
-            <Button Content="이미지 삽입" Click="InsertImage_Click" Background="BlueViolet"/>
+    <Window.Resources>
+        <!-- Open Animation -->
+        <Storyboard x:Key="OpenMenuAnimation">
+            <DoubleAnimation
+                Storyboard.TargetName="HiddenPanel"
+                Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                From="200" To="0" Duration="0:0:0.3" />
+        </Storyboard>
 
-            <Button Content="save" Click="Save" Background="BlueViolet"/>
-            <Button Content="load" Click="Load" Background="BlueViolet"/>
-            <Button Content="LoadPDFs" Click="LoadPDFs" Background="BlueViolet"/>
-            <!-- Add Font Size Buttons -->
-            <StackPanel Orientation="Horizontal">
-                <Button Content="Increase Font Size" Click="IncreaseFontSize_Click" />
-                <Button Content="Decrease Font Size" Click="DecreaseFontSize_Click" />
-                <Button Content="Change Text Color" Click="ChangeTextColor_Click" />
-                <syncfusion:ColorPicker x:Name="myColorPicker"/>
-                <Button Content="Change Highlight Color" Click="ChangeHighlightColor_Click" />
-                <Button Content="underline" Click="UnderlineText_Click" />
-                <Button Content="middleline" Click="MiddlelineText_Click" />
-                <Button Content="bold" Click="BoldText_Click" />
-                <Button Content="Italick" Click="ItalicText_Click" />
-                <Button Content="Open Modal Window" Click="OpenModalWindow_Click" 
-               />
-                <ComboBox x:Name="FontSizeComboBox"
-          Width="100"
-          SelectedIndex="4"
-          SelectionChanged="FontSizeComboBox_SelectionChanged">
-                    <ComboBoxItem Content="6" />
-                    <ComboBoxItem Content="7" />
-                    <ComboBoxItem Content="8" />
-                    <ComboBoxItem Content="9" />
-                    <ComboBoxItem Content="10" />
-                    <ComboBoxItem Content="11" />
-                    <ComboBoxItem Content="12" />
-                    <ComboBoxItem Content="13" />
-                    <ComboBoxItem Content="14" />
-                    <ComboBoxItem Content="15" />
-                    <ComboBoxItem Content="16" />
-                    <ComboBoxItem Content="17" />
-                    <ComboBoxItem Content="18" />
-                    <ComboBoxItem Content="19" />
-                    <ComboBoxItem Content="20" />
-                    <ComboBoxItem Content="21" />
-                    <ComboBoxItem Content="22" />
-                    <ComboBoxItem Content="23" />
-                    <ComboBoxItem Content="24" />
-                    <ComboBoxItem Content="25" />
-                    <ComboBoxItem Content="26" />
-                    <ComboBoxItem Content="27" />
-                    <ComboBoxItem Content="28" />
-                    <ComboBoxItem Content="29" />
-                    <ComboBoxItem Content="30" />
-                    <!-- 원하는 폰트 크기 항목 추가 -->
-                </ComboBox>
+        <!-- Close Animation -->
+        <Storyboard x:Key="CloseMenuAnimation">
+            <DoubleAnimation
+                Storyboard.TargetName="HiddenPanel"
+                Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)"
+                From="0" To="200" Duration="0:0:0.3" />
+        </Storyboard>
+    </Window.Resources>
+    <Grid x:Name="myGrid">
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="1*" MinWidth="10" MaxWidth="600"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="6*" MinWidth="300"/>
+            <!--<ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="2*" MinWidth="100"/>-->
+        </Grid.ColumnDefinitions>
+
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Grid.Column="0" VerticalAlignment="Stretch" >
+
+                <StackPanel Orientation="Horizontal" Height="44" Background="Beige">
+                    <Button x:Name="NewFolderButton" Click="NewFolderButton_Click">
+                        <materialDesign:PackIcon  Kind="FolderAdd"/>
+                    </Button>
+                    <Button x:Name="NewFileButton" Click="NewFileButton_Click">
+                        <materialDesign:PackIcon  Kind="FilePlus"/>
+                    </Button>
+                </StackPanel>
+
+                <TreeView x:Name="FoldersTreeView" VerticalAlignment="Stretch" VerticalContentAlignment="Stretch" SelectedItemChanged="FoldersTreeView_SelectedItemChanged" ></TreeView>
+
 
             </StackPanel>
+        </ScrollViewer>
 
-            <RichTextBox x:Name="richTextBox" 
-                    
+
+        <GridSplitter  Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="5" Background="Black"></GridSplitter>
+     
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Column="2" VerticalAlignment="Stretch">
+            <StackPanel Orientation="Vertical"  >
+                <!--<Button Content="이미지 삽입" Click="InsertImage_Click" Background="BlueViolet"/>
+
+                <Button Content="save" Click="Save" Background="BlueViolet"/>
+                <Button Content="load" Click="Load" Background="BlueViolet"/>
+                <Button Content="LoadPDFs" Click="LoadPDFs" Background="BlueViolet"/>-->
+                <!-- Add Font Size Buttons -->
+                <TextBlock x:Name="fileName" Background="Beige" FontSize="18" Padding="10">test.xaml</TextBlock>
+                <StackPanel Orientation="Horizontal" x:Name="settingText" >
+                    <Button Click="IncreaseFontSize_Click" >
+                        <materialDesign:PackIcon  Kind="FormatFontSizeIncrease"/>
+                    </Button>
+                    <Button Click="DecreaseFontSize_Click">
+                        <materialDesign:PackIcon  Kind="FormatFontSizeDecrease"/>
+                    </Button>
+                    <ComboBox x:Name="FontSizeComboBox"
+          Width="50"
+          SelectedIndex="8"
+          SelectionChanged="FontSizeComboBox_SelectionChanged" />
+
+                    <Button Click="ChangeTextColor_Click" 
+                            >
+                        <materialDesign:PackIcon  Kind="FormatColorFill"/>
+                    </Button>
+                    <syncfusion:ColorPicker x:Name="myColorPicker"/>
+                    <Button Click="ChangeHighlightColor_Click" >
+                        <materialDesign:PackIcon  Kind="FormatColorHighlight"/>
+                    </Button>
+                    <Button Click="UnderlineText_Click" >
+                        <materialDesign:PackIcon  Kind="FormatUnderline"/>
+                    </Button>
+                    <Button  Click="MiddlelineText_Click" >
+                        <materialDesign:PackIcon  Kind="FormatStrikethrough"/>
+                    </Button>
+                    <Button Click="BoldText_Click" >
+                        <materialDesign:PackIcon  Kind="FormatBold"/>
+                    </Button>
+                    <Button Click="ItalicText_Click" >
+                        <materialDesign:PackIcon  Kind="FormatItalic"/>
+                    </Button>
+                    <Button  Click="OpenModalWindow_Click" 
+               >
+                        <materialDesign:PackIcon  Kind="Keyboard"/>
+                    </Button>
+                    <Button  Click="Save">
+                        <materialDesign:PackIcon  Kind="ContentSave"/>
+                    </Button>
+
+                </StackPanel>
+                <PdfViewer:PdfViewerControl x:Name="pdfViewer" Visibility="Collapsed"
+        ZoomMode="FitWidth"
+                    ></PdfViewer:PdfViewerControl>
+
+                <RichTextBox 
+                    HorizontalContentAlignment="Stretch"
+                    VerticalContentAlignment="Stretch"
+                    x:Name="richTextBox" 
                      MouseWheel="rtb_PreviewMouseWheel"
                      VerticalScrollBarVisibility="Auto"
                      HorizontalScrollBarVisibility="Auto"
-                           PreviewKeyDown="RichTextBox_PreviewKeyDown"
-                     IsDocumentEnabled="True">
-                
-                <FlowDocument x:Name="flow"  AllowDrop="True"
- Drop="RichTextBox_Drop"
- DragOver="RichTextBox_DragOver">
-                    <Paragraph>
-                        <Run Text="텍스트를 입력하세요."/>
-                    </Paragraph>
-                </FlowDocument>
-            </RichTextBox>
-            <ListBox x:Name="listbox" Height="200" SelectionChanged="OnFileSelected"></ListBox>
-            <PdfViewer:PdfViewerControl x:Name="pdfViewer"></PdfViewer:PdfViewerControl>
-        </StackPanel>
-    </ScrollViewer>
+                      PreviewKeyDown="RichTextBox_PreviewKeyDown"
+                     IsDocumentEnabled="True"
+                          Drop="RichTextBox_Drop"
+                    DragOver="RichTextBox_DragOver">
+
+                    <FlowDocument x:Name="flow"  AllowDrop="True"
+>
+                        <Paragraph>
+                            <Run Text="텍스트를 입력하세요."/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+             
+             
+            </StackPanel>
+           
+         
+        </ScrollViewer>
+       
+        <Button Grid.Column="2" Click="ToggleMenuButton_Click" HorizontalAlignment="Right" Height="50" Padding="0">
+            <materialDesign:PackIcon  Kind="ArrowLeft" Width="25" />
+        </Button>
+        <GridSplitter Visibility="Collapsed"  x:Name="splitter" Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="5" Background="Black" ></GridSplitter>
+        <Grid Grid.Column="4" x:Name="HiddenPanel" Background="LightGray" Visibility="Collapsed" HorizontalAlignment="Right"    RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TranslateTransform X="0"/>
+            </Grid.RenderTransform>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <RichTextBox Grid.Row="0" Name="OutputRichTextBox" Padding="16" IsReadOnly="True"  />
+            <TextBox x:Name="InputTextBlock" Padding="16" Grid.Row="1" Background="AliceBlue" Text="질문"  TextWrapping="Wrap" FontSize="16"/>
+            <Button  VerticalAlignment="Bottom" HorizontalAlignment="Right"  Margin="10" Grid.Row="1" Click="CopyTextButton_Click" x:Name="CopyTextButton">질문</Button>
+        </Grid>
+    </Grid>
 </Window>

@@ -9,9 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.61" />
+    <PackageReference Include="Markdig" Version="0.37.0" />
+    <PackageReference Include="MarkdownSharp" Version="2.0.5" />
     <PackageReference Include="MaterialDesignThemes" Version="5.0.0" />
-    <PackageReference Include="Syncfusion.Pdf.Wpf" Version="25.2.4" />
-    <PackageReference Include="Syncfusion.PdfViewer.WPF" Version="25.2.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Syncfusion.Pdf.Wpf" Version="25.2.7" />
+    <PackageReference Include="Syncfusion.PdfViewer.WPF" Version="25.2.7" />
   </ItemGroup>
 
 </Project>
