@@ -24,7 +24,7 @@ namespace WindowsProgrammingApp
             CopyTextButton.IsEnabled = false;
             CopyTextButton.Content = "Loading...";
 
-            string url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAQicF6fXLQb6Q0TV8QHMHEAHs6S9bWfyM";
+            string url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=";
             string jsonBody = "{\"contents\":[{\"parts\":[{\"text\":\"" + InputTextBlock.Text + "\"}]}]}";
 
             using (HttpClient client = new HttpClient())
