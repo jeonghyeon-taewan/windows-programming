@@ -1,2 +1,3 @@
 # windows-programming
-윈프 팀플
+제미나이를 이용한 스마트 노트
+PDF viewer 및 text, 이미지 메모
